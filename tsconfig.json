@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "sourceRoot": "src",
+    "types": [
+      "body-parser",
+      "compression",
+      "express",
+      "express-serve-static-core",
+      "mime",
+      "node",
+      "serve-static"
+    ]
+  },
+  "exclude": [
+    "./node_modules",
+    "./typings/main.d.ts",
+    "./typings/main",
+    "parkedAssets",
+    ".git"
+  ],
+  "filesGlob": [
+    "./src/app/**/*.ts",
+    "./src/platform/**/*.ts",
+    "!./node_modules/**",
+    "!./parkedAssets/**/*.ts",
+    "./src/custom-typings.d.ts",
+    "./typings/index.d.ts"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "resolveGlobs": true,
+    "forkChecker": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": { "rewriteTsconfig": false }
+}
