@@ -37,13 +37,13 @@ export class TodoComponent implements OnInit {
       '/api',
       JSON.stringify({
         title: title.value,
-        entrynum: !this.todos.length ? '0' : (this.todos[this.todos.length - 1].id + 1).toString()
+        entrynum: !this.todos.length ? '0' : (parseInt(this.todos[this.todos.length - 1].id) + 1).toString()
       }),
       { headers: this.headers }) 
       .subscribe((res: Response) => {
         this.todos.push(new Todo(
           title.value, 
-          !this.todos.length ? '0' : (this.todos[this.todos.length - 1].id + 1).toString()
+          !this.todos.length ? '0' : (parseInt(this.todos[this.todos.length - 1].id) + 1).toString()
         ));
         
         title.value = '';

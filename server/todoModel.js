@@ -25,7 +25,6 @@ module.exports = {
   },
 
   put(param, callback) {
-    console.log(param, 123456789)
     db.any('UPDATE todos SET title=$1 WHERE entrynum=$2', param)
       .then(data => {
         callback(data);

@@ -63,7 +63,7 @@ input:-moz-placeholder {
 .row .label input {
   position: relative;
   font: 25px 'Open Sans';
-  height: 30px;
+  height: 32px;
   width: 100%;
   border: 0px;
   outline: none;
@@ -74,7 +74,7 @@ input:-moz-placeholder {
   display: inline-block;
   position: absolute;
   width: 10px;
-  top: 20px;
+  top: 25px;
 }
 
 .row .delete a { 
