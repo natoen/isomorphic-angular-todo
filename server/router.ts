@@ -23,8 +23,7 @@ module.exports = (app, express, port) => {
   });
 
   app.get('*', (req, res) => {
-    const json = JSON.stringify({ status: 404, message: 'No Content' });
     res.setHeader('Content-Type', 'application/json');
-    res.status(404).send(json);
+    res.status(404).json({ status: 404, message: 'No Content' });
   });
 };
