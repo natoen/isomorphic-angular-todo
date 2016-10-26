@@ -47,7 +47,6 @@ export class TodoComponent implements OnInit {
         ));
         
         title.value = '';
-        event.target.blur();
         this.loading = false;
         console.log(res['status'], res['statusText']);
       });
