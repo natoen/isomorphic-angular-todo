@@ -21,11 +21,11 @@ export class TodoComponent implements OnInit {
   constructor(private http: Http) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-    this.http.get('/api')
+    this.http.get('/api/todo')
       .subscribe((res: Response) => {
         this.todos = res.json()
           .map(item => new Todo(item.title, item.entrynum))
-          .sort((a, b) => parseInt(a.id) - parseInt(b.id)); 
+          .sort((a, b) => a.id - b.id); 
       });
   }
 
@@ -34,16 +34,15 @@ export class TodoComponent implements OnInit {
     title.value = title.value.trim();
 
     this.http.post(
-      '/api',
+      `/api/todo/${!this.todos.length ? 0 : (this.todos[this.todos.length - 1].id + 1)}`,
       JSON.stringify({
         title: title.value,
-        entrynum: !this.todos.length ? '0' : (parseInt(this.todos[this.todos.length - 1].id) + 1).toString()
       }),
       { headers: this.headers }) 
       .subscribe((res: Response) => {
         this.todos.push(new Todo(
           title.value, 
-          !this.todos.length ? '0' : (parseInt(this.todos[this.todos.length - 1].id) + 1).toString()
+          !this.todos.length ? 0 : this.todos[this.todos.length - 1].id + 1
         ));
         
         title.value = '';
@@ -57,7 +56,7 @@ export class TodoComponent implements OnInit {
   removeTodo(todo: any): boolean {
     this.loading = true;
 
-    this.http.delete('/api/' + todo.id)
+    this.http.delete(`/api/todo/${todo.id}`)
       .subscribe((res: Response) => {
         this.todos = this.todos.filter((item) => item.id !== todo.id);
         this.loading = false;
@@ -74,10 +73,9 @@ export class TodoComponent implements OnInit {
       this.loading = true;
 
       this.http.put(
-        '/api',
+        `/api/todo/${todo.id}`,
         JSON.stringify({
           title: event.target.innerText,
-          entrynum: todo.id
         }),
         { headers: this.headers }) 
         .subscribe((res: Response) => {

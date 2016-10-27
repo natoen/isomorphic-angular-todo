@@ -13,7 +13,7 @@ module.exports = {
   },
 
   post(req, res) {
-    model.post([req.body.title, req.body.entrynum], (data, error) => {
+    model.post([req.body.title, req.params.entrynum], (data, error) => {
       if (error) {
         res.status(500).end();
       } else {
@@ -23,7 +23,7 @@ module.exports = {
   },
 
   put(req, res) {
-    model.put([req.body.title, req.body.entrynum], (data, error) => {
+    model.put([req.body.title, req.params.entrynum], (data, error) => {
       if (error) {
         res.status(500).end();
       } else {

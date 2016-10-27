@@ -1,8 +1,8 @@
 export class Todo {
   title: string;
-  id: string;
+  id: number;
 
-  constructor(title: string, id: string) {
+  constructor(title: string, id: number) {
     this.title = title;
     this.id = id;
   }
