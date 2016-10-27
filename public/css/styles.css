@@ -1,15 +1,12 @@
-body {
-  text-align: center;
-}
-
 body > div {
   max-width: 767px;
   margin: 0px auto;
 }
 
 body > div:first-child {
-  display: inline-block;
+  display: block;
   font: 80px 'Work Sans';
+  text-align: center;
 }
 
 body > div:first-child img {
@@ -35,46 +32,45 @@ body > div:first-child img {
   outline: none;
 }
 
-input::-webkit-input-placeholder {
+.field input::-webkit-input-placeholder {
   font: 35px 'Work Sans';
   text-align: center;
 }
 
-input:-moz-placeholder {
+.field input:-moz-placeholder {
   font: 35px 'Work Sans';
   text-align: center;
 }
 
 .loading {
   font: 10px 'Open Sans';
+  text-align: center;
 }
 
 .row {
   position: relative;
-  height: 35px;
 }
 
 .row .label {
-  display: inline-block;
-  width: 95%;
-  margin: 1em 0em;
+  width: 98%;
+  text-align: left;
 }
 
-.row .label input {
+.row .label p {
   position: relative;
+  margin: 0.5em 0em;
   font: 25px 'Open Sans';
-  height: 32px;
+  min-height: 32px;
+  max-height: 1000px;
   width: 100%;
-  border: 0px;
   outline: none;
-  left: -15px;
 }
 
 .row .delete {
-  display: inline-block;
   position: absolute;
   width: 10px;
-  top: 25px;
+  top: 8px;
+  right: 0px;
 }
 
 .row .delete a { 

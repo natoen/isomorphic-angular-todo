@@ -1,11 +1,13 @@
 <div class="field">
-  <input name="title" type="text " placeholder="What's next?" #newtitle (keyup.enter)="addTodo(newtitle, $event)" >
+  <input name="title" type="text " placeholder="What's next?"
+    #newtitle (keyup.enter)="addTodo(newtitle, $event)" >
 </div>
 <div class="list">
   <div class="row" *ngFor="let todo of todos">
-    <div class="label"><input name="entry" type="text" value={{todo.title}}
-      #todoEntry (keyup.enter)="updateTodo(todoEntry, todo, $event)"
-      (blur)="updateTodo(todoEntry, todo, $event)">
+    <div class="label">
+      <p contenteditable="true" (blur)="updateTodo($event, todo)">
+          {{todo.title}}
+      </p>
     </div>
     <div class="delete"><a href="#" (click)="removeTodo(todo)">X</a></div>
   </div>

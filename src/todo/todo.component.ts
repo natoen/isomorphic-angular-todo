@@ -67,23 +67,23 @@ export class TodoComponent implements OnInit {
     return false;
   }
 
-  updateTodo(update: HTMLInputElement, todo: any, event: any): boolean {
-    update.value = update.value.trim();
+  updateTodo(event: any, todo: any): boolean {
+    event.target.innerText = event.target.innerText.trim();
 
-    if (update.value !== todo.title) {
+    if (event.target.innerText !== todo.title) {
       this.loading = true;
 
       this.http.put(
         '/api',
         JSON.stringify({
-          title: update.value,
+          title: event.target.innerText,
           entrynum: todo.id
         }),
         { headers: this.headers }) 
         .subscribe((res: Response) => {
           this.todos.forEach((item) => {
             if (item.id === todo.id) {
-              item.title = update.value;
+              item.title = event.target.innerText;
             }
           });
 
