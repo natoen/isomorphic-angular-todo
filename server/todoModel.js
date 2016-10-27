@@ -3,7 +3,7 @@ const db = require('./db');
 
 module.exports = {
   get(callback) {
-    db.any('SELECT * FROM todos')
+    db.knex.select('*').from('todos')
       .then(data => {
         callback(data, null);
       })
@@ -14,7 +14,7 @@ module.exports = {
   },
 
   post(param, callback) {
-    db.any('INSERT INTO todos(title,entrynum)VALUES($1,$2)', param)
+    db.knex.insert([{title: param[0], entrynum: param[1]}]).into('todos')
       .then(data => {
         callback(data, null);
       })
@@ -25,7 +25,7 @@ module.exports = {
   },
 
   put(param, callback) {
-    db.any('UPDATE todos SET title=$1 WHERE entrynum=$2', param)
+    db.knex('todos').where('entrynum', '=', param[1]).update({ title: param[0] })
       .then(data => {
         callback(data);
       })
@@ -36,7 +36,7 @@ module.exports = {
   },
 
   delete(param, callback) {
-    db.any('DELETE FROM todos WHERE entrynum=$1', param)
+    db.knex('todos').where('entrynum', param[0]).del()
       .then(data => {
         callback(data, null);
       })

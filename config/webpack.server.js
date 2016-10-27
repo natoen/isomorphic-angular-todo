@@ -12,7 +12,7 @@ const METADATA = {
 
 module.exports = {
   target: 'node',
-  externals: helpers.checkNodeImport,
+  externals: [helpers.checkNodeImport, /bookshelf|knex/],
   context: helpers.root(''),
   metadata: METADATA, // Static metadata for index.html
 
